@@ -137,7 +137,7 @@ client.on("message", async message => {
                 selectedtime=0;
                 nue = [];
                 return;
-            }
+            
             }
             else {
                 selectedtime = selectedtime - 1;
@@ -180,6 +180,7 @@ client.on("message", async message => {
                     nue = [];
                     return;
                 }
+            }
             }
         }
         if((message.content.indexOf(prefix) == 0)){
