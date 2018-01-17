@@ -490,6 +490,20 @@ client.on("message", async message => {
                 if(!args[1]){
                     args = [message.author.username.toString(), args[0]];
                 }
+                if(message.mentions.members){
+                if(message.mentions.members.first() == args[0]){
+                    args[0] = message.mentions.members.first().user.username
+                }
+                if(message.mentions.members.first() == args[1]){
+                    args[1] = message.mentions.members.first().user.username
+                }
+                if(message.mentions.members.last() == args[0]){
+                    args[0] = message.mentions.members.last().user.username
+                }
+                if(message.mentions.members.last() == args[1]){
+                    args[1] = message.mentions.members.last().user.username
+                }
+            }
                 var thing1 = args[0].toString();
                 var thing2 = args[1].toString()
                 var matches = ["shadow teddy", "shadow teddy1424", "teddy shadow", "teddy1424 shadow", "happy teddy", "happy teddy1424", "teddy happy", "teddy1424 happy", "victoria teddy", "victoria teddy1424", "teddy victoria", "teddy1424 victoria", "michael bubba", "michael bubbaplayspiano", "michael taryn", "bubba michael", "bubbaplayspinao michael", "taryn michael", "paunda anya", "anya paunda", "ben anya", "anya ben"];
