@@ -101,7 +101,7 @@ client.on("message", async message => {
             }
         }
         if(numbergame == true){
-            if(Number.isNaN(parseInt(message.content))) return console.log("big gay");
+            if(!Number.isNaN(parseInt(message.content))){
             if(parseInt(message.content) == chosennumber){
                 
                 numbergame = false;
@@ -137,6 +137,7 @@ client.on("message", async message => {
                 selectedtime=0;
                 nue = [];
                 return;
+            }
             }
             else {
                 selectedtime = selectedtime - 1;
