@@ -45,148 +45,6 @@ client.on("message", async message => {
     var args = message.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
     if(message.channel.type != 'dm' && message.channel.type != 'groupdm'){
-        if(scramble == true){
-            if(message.content.toLowerCase().indexOf(chosen) != -1){
-                if(time == 30000 && count >= 20){
-                    var messa = "you had only " + 30-count + " seconds left!";
-                }
-                else if(time == 30000 && count <= 10){
-                    var messa = "that round lasted only " + count + " seconds!";
-                }
-                else if(time == 30000 && count < 20 && count > 10){
-                    var messa = "that round lasted " + count + " seconds!";
-                }
-                else if(time > 40000 && count >= (time/1000)-15){
-                    var messa = "you had only " + ((time/1000)-count) + " seconds left!";
-                }
-                else if(time > 40000 && count <= 15){
-                    var messa = "that round lasted only " + count + " seconds!"; 
-                }
-                else if(time > 40000 && count <= (time/1000)-15 && count >= 15){
-                    var messa = "that round lasted " + count + " seconds!";
-                }
-                scramble = false;
-                clearTimeout(ret);
-                clearInterval(set);
-                message.react('✅').catch(function(error){
-                    if(error) throw error;
-                });
-                message.channel.sendEmbed({
-                    color: 0xffe23c,
-                    author: {
-                        name: 'victory!',
-                        icon_url: message.client.user.avatarURL,
-                    },
-                    fields: [{
-                        name: 'word',
-                        value: chosen,
-                        inline: true,
-                    }, {
-                        name: 'winner',
-                        value: message.author + "",
-                        inline: true,
-                    }],
-                    footer: {
-                        text: messa
-                    }
-                });chosen = '';
-                count = 0;
-                guess = [];
-                return;
-            } else {
-                message.react('❌').catch(function(error){
-                    if(error) throw error;
-                });
-                guess.push({guess: message.content.toString(), auth: (message.member.displayName)})
-            }
-        }
-        if(numbergame == true){
-            if(!Number.isNaN(parseInt(message.content))){
-            if(parseInt(message.content) == chosennumber){
-                
-                numbergame = false;
-                if(selectedtime-1 == 1){
-                    var eeee = `you had 1 guess left!`
-                }
-                else if(selectedtime-1 == 0){
-                    var eeee = `you got it on your last guess!`
-                }
-                else {
-                    var eeee = `you had ${selectedtime-1} guesses left!`
-                }
-                message.channel.sendEmbed({
-                    color: 0xffe23c,
-                    author: {
-                        name: 'victory!',
-                        icon_url: client.user.displayAvatarURL
-                    },
-                    fields: [{
-                        name: 'number',
-                        value: chosennumber,
-                        inline: true,
-                    }, {
-                        name: 'winner',
-                        value: message.author + "",
-                        inline: true,
-                    }],
-                    footer: {
-                        text: eeee
-                    }
-                });
-                chosennumber = '';
-                selectedtime=0;
-                nue = [];
-                return;
-            
-            }
-            else {
-                selectedtime = selectedtime - 1;
-                if(selectedtime != 0){
-                if(parseInt(message.content) > chosennumber){ nue.push({num: parseInt(message.content) - chosennumber, auth: message.author.username, og: parseInt(message.content)});return message.react('⬇').catch(function(error){
-                        if(error) throw error;
-                    })};
-                    if(parseInt(message.content) < chosennumber){ nue.push({num: chosennumber - parseInt(message.content), auth: message.author.username, og: parseInt(message.content)}); return message.react('⬆').catch(function(error){
-                        if(error) throw error;
-                    })};
-                }
-                else if(selectedtime == 0){
-                    numbergame = false;
-                    selectedtime = 0;
-                    if(parseInt(message.content) > chosennumber){ nue.push({num: parseInt(message.content) - chosennumber, auth: message.author.username, og: parseInt(message.content)})};
-                    if(parseInt(message.content) < chosennumber){ nue.push({num: chosennumber - parseInt(message.content), auth: message.author.username, og: parseInt(message.content)})};
-                    nue.sort(function(a,b){
-                        return b.num - a.num;
-                    });
-                    nue = nue.reverse();
-                    var closestguess = nue[0].num;
-                    var closestauth = nue[0].auth;
-                    var closest = nue[0].og;
-                    message.channel.sendEmbed({
-                        color: 0xffe23c,
-                        author: {
-                            name: 'game over...',
-                            icon_url: client.user.displayAvatarURL
-                        },
-                        fields: [{
-                            name: 'number',
-                            value: chosennumber,
-                            inline: true,
-                        }, {
-                            name: 'winner',
-                            value: 'nobody',
-                            inline: true,
-                        }],
-                        footer: {
-                            text: `closest guess: ${closestauth} with ${closest}`
-                        }
-                    })
-                    chosennumber = '';
-                    nue = [];
-                    return;
-                }
-            }
-            }
-        }
         if((message.content.indexOf(prefix) == 0)){
             if(command === "scramble"){
             if(scramble == true) return message.reply("there is already a scramble game happening right now!");
@@ -604,6 +462,149 @@ client.on("message", async message => {
                     }
                 })
             }
+        } else {
+        if(scramble == true){
+            if(message.content.toLowerCase().indexOf(chosen) != -1){
+                if(time == 30000 && count >= 20){
+                    var messa = "you had only " + 30-count + " seconds left!";
+                }
+                else if(time == 30000 && count <= 10){
+                    var messa = "that round lasted only " + count + " seconds!";
+                }
+                else if(time == 30000 && count < 20 && count > 10){
+                    var messa = "that round lasted " + count + " seconds!";
+                }
+                else if(time > 40000 && count >= (time/1000)-15){
+                    var messa = "you had only " + ((time/1000)-count) + " seconds left!";
+                }
+                else if(time > 40000 && count <= 15){
+                    var messa = "that round lasted only " + count + " seconds!"; 
+                }
+                else if(time > 40000 && count <= (time/1000)-15 && count >= 15){
+                    var messa = "that round lasted " + count + " seconds!";
+                }
+                scramble = false;
+                clearTimeout(ret);
+                clearInterval(set);
+                message.react('✅').catch(function(error){
+                    if(error) throw error;
+                });
+                message.channel.sendEmbed({
+                    color: 0xffe23c,
+                    author: {
+                        name: 'victory!',
+                        icon_url: message.client.user.avatarURL,
+                    },
+                    fields: [{
+                        name: 'word',
+                        value: chosen,
+                        inline: true,
+                    }, {
+                        name: 'winner',
+                        value: message.author + "",
+                        inline: true,
+                    }],
+                    footer: {
+                        text: messa
+                    }
+                });chosen = '';
+                count = 0;
+                guess = [];
+                return;
+            } else {
+                message.react('❌').catch(function(error){
+                    if(error) throw error;
+                });
+                guess.push({guess: message.content.toString(), auth: (message.member.displayName)})
+            }
+        }
+        if(numbergame == true){
+            if(!Number.isNaN(parseInt(message.content))){
+            if(parseInt(message.content) == chosennumber){
+                
+                numbergame = false;
+                if(selectedtime-1 == 1){
+                    var eeee = `you had 1 guess left!`
+                }
+                else if(selectedtime-1 == 0){
+                    var eeee = `you got it on your last guess!`
+                }
+                else {
+                    var eeee = `you had ${selectedtime-1} guesses left!`
+                }
+                message.channel.sendEmbed({
+                    color: 0xffe23c,
+                    author: {
+                        name: 'victory!',
+                        icon_url: client.user.displayAvatarURL
+                    },
+                    fields: [{
+                        name: 'number',
+                        value: chosennumber,
+                        inline: true,
+                    }, {
+                        name: 'winner',
+                        value: message.author + "",
+                        inline: true,
+                    }],
+                    footer: {
+                        text: eeee
+                    }
+                });
+                chosennumber = '';
+                selectedtime=0;
+                nue = [];
+                return;
+            
+            }
+            else {
+                selectedtime = selectedtime - 1;
+                if(selectedtime != 0){
+                if(parseInt(message.content) > chosennumber){ nue.push({num: parseInt(message.content) - chosennumber, auth: message.author.username, og: parseInt(message.content)});return message.react('⬇').catch(function(error){
+                        if(error) throw error;
+                    })};
+                    if(parseInt(message.content) < chosennumber){ nue.push({num: chosennumber - parseInt(message.content), auth: message.author.username, og: parseInt(message.content)}); return message.react('⬆').catch(function(error){
+                        if(error) throw error;
+                    })};
+                }
+                else if(selectedtime == 0){
+                    numbergame = false;
+                    selectedtime = 0;
+                    if(parseInt(message.content) > chosennumber){ nue.push({num: parseInt(message.content) - chosennumber, auth: message.author.username, og: parseInt(message.content)})};
+                    if(parseInt(message.content) < chosennumber){ nue.push({num: chosennumber - parseInt(message.content), auth: message.author.username, og: parseInt(message.content)})};
+                    nue.sort(function(a,b){
+                        return b.num - a.num;
+                    });
+                    nue = nue.reverse();
+                    var closestguess = nue[0].num;
+                    var closestauth = nue[0].auth;
+                    var closest = nue[0].og;
+                    message.channel.sendEmbed({
+                        color: 0xffe23c,
+                        author: {
+                            name: 'game over...',
+                            icon_url: client.user.displayAvatarURL
+                        },
+                        fields: [{
+                            name: 'number',
+                            value: chosennumber,
+                            inline: true,
+                        }, {
+                            name: 'winner',
+                            value: 'nobody',
+                            inline: true,
+                        }],
+                        footer: {
+                            text: `closest guess: ${closestauth} with ${closest}`
+                        }
+                    })
+                    chosennumber = '';
+                    nue = [];
+                    return;
+                }
+            }
+            }
+        }
         }
     }
 });
