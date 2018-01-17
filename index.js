@@ -142,8 +142,12 @@ client.on("message", async message => {
             else {
                 selectedtime = selectedtime - 1;
                 if(selectedtime != 0){
-                    if(parseInt(message.content) > chosennumber){ nue.push({num: parseInt(message.content) - chosennumber, auth: message.author.username, og: parseInt(message.content)});return message.reply('\`too high!\`')};
-                    if(parseInt(message.content) < chosennumber){ nue.push({num: chosennumber - parseInt(message.content), auth: message.author.username, og: parseInt(message.content)}); return message.reply('\`too low!\`')};
+                if(parseInt(message.content) > chosennumber){ nue.push({num: parseInt(message.content) - chosennumber, auth: message.author.username, og: parseInt(message.content)});return message.react('⬇').catch(function(error){
+                        if(error) throw error;
+                    })};
+                    if(parseInt(message.content) < chosennumber){ nue.push({num: chosennumber - parseInt(message.content), auth: message.author.username, og: parseInt(message.content)}); return message.react('⬆').catch(function(error){
+                        if(error) throw error;
+                    })};
                 }
                 else if(selectedtime == 0){
                     numbergame = false;
