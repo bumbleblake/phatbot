@@ -72,7 +72,7 @@ client.on("message", async message => {
                     if(error) throw error;
                 });
                 message.channel.sendEmbed({
-                    color: 0xff5947,
+                    color: 0xffe23c,
                     author: {
                         name: 'victory!',
                         icon_url: message.client.user.avatarURL,
@@ -115,7 +115,7 @@ client.on("message", async message => {
                     var eeee = `you had ${selectedtime-1} guesses left!`
                 }
                 message.channel.sendEmbed({
-                    color: 0xff5947,
+                    color: 0xffe23c,
                     author: {
                         name: 'victory!',
                         icon_url: client.user.displayAvatarURL
@@ -157,7 +157,7 @@ client.on("message", async message => {
                     var closestauth = nue[0].auth;
                     var closest = nue[0].og;
                     message.channel.sendEmbed({
-                        color: 0xff5947,
+                        color: 0xffe23c,
                         author: {
                             name: 'game over...',
                             icon_url: client.user.displayAvatarURL
@@ -201,7 +201,7 @@ client.on("message", async message => {
                 }
                 setTimeout(function(){
                 message.channel.sendEmbed({
-                    color: 0xff5947,
+                    color: 0xffe23c,
                     author: {
                         name: 'scramble!',
                         icon_url: message.client.user.avatarURL,
@@ -305,7 +305,7 @@ client.on("message", async message => {
                     scramble = false;
                     
                     message.channel.sendEmbed({
-                        color: 0xff5947,
+                        color: 0xffe23c,
                         author: {
                             name: 'game over...',
                             icon_url: message.client.user.avatarURL,
@@ -346,7 +346,7 @@ client.on("message", async message => {
                 chosennumber = Math.round(Math.random()*(selectedgame));
                 numbergame = true;
                 message.channel.sendEmbed({
-                    color: 0xff5947,
+                    color: 0xffe23c,
                     author: {
                         name: 'guess the number!',
                         icon_url: client.user.displayAvatarURL
@@ -373,14 +373,14 @@ client.on("message", async message => {
                 if(rec == 1){
                 rps(member1,member2);
                 message.channel.sendEmbed({
-                    color: 0xff5947,
+                    color: 0xffe23c,
                     author: {
                         name: 'rock, paper, scissors!',
                         icon_url: client.user.avatarURL,
                     }
                 });
                 message.channel.sendEmbed({
-                    color: 0xff5947,
+                    color: 0xffe23c,
                     fields: [{
                         name: "winner",
                         value: winner,
@@ -388,7 +388,7 @@ client.on("message", async message => {
                     }]
                 })
                 message.channel.sendEmbed({
-                    color: 0xff5947,
+                    color: 0xffe23c,
                     fields: [{
                         name: member1.user.username + " chose",
                         value: choice1,
@@ -422,14 +422,14 @@ client.on("message", async message => {
                     var newwin = "nobody";
                 }
                 message.channel.sendEmbed({
-                    color: 0xff5947,
+                    color: 0xffe23c,
                     author: {
                         name: 'rock, paper, scissors!',
                         icon_url: client.user.avatarURL,
                     }
                 });
                 message.channel.sendEmbed({
-                    color: 0xff5947,
+                    color: 0xffe23c,
                     fields: [{
                         name: "winner",
                         value: newwin,
@@ -437,7 +437,7 @@ client.on("message", async message => {
                     }]
                 })
                 message.channel.sendEmbed({
-                    color: 0xff5947,
+                    color: 0xffe23c,
                     fields: [{
                         name: member1.user.username + "'s score",
                         value: t1,
@@ -468,7 +468,7 @@ client.on("message", async message => {
                 var ques = (args.join(" "));
             }
                message.channel.sendEmbed({
-                   color: 0xff5947,
+                   color: 0xffe23c,
                    author: {
                        name: `▶${ques}◀`,
                        icon_url: client.user.avatarURL
@@ -491,7 +491,7 @@ client.on("message", async message => {
                 var matches = ["shadow teddy", "shadow teddy1424", "teddy shadow", "teddy1424 shadow", "happy teddy", "happy teddy1424", "teddy happy", "teddy1424 happy", "victoria teddy", "victoria teddy1424", "teddy victoria", "teddy1424 victoria", "michael bubba", "michael bubbaplayspiano", "michael taryn", "bubba michael", "bubbaplayspinao michael", "taryn michael", "paunda anya", "anya paunda", "ben anya", "anya ben"];
                 if(matches.indexOf((thing1.toLowerCase().toString() + " " + thing2.toLowerCase().toString())) != -1){
                     return message.channel.sendEmbed({
-                        color: 0xff5947,
+                        color: 0xffe23c,
                         author: {
                             name: '❤matchmaking❤',
                             icon_url: client.user.avatarURL,
@@ -570,7 +570,7 @@ client.on("message", async message => {
                     var mess = "almost as good as #sheddy";
                 }
                 return message.channel.sendEmbed({
-                    color: 0xff5947,
+                    color: 0xffe23c,
                     author: {
                         name: '❤matchmaking❤',
                         icon_url: client.user.avatarURL,
