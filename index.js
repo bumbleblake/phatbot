@@ -326,6 +326,7 @@ client.on("message", async message => {
                 var answers = ["100% fam", "yep", "without a doubt <o/", "hell yeah fam", "you can count on it bby", "chances are \*burp\* pretty güd", "the phat gods say yes", "horse buoy approves of this", "for sure <o/", "of course boi", "the phat gods are unsure", "hmmmm... idk.", "ehh maybe?", "i have no clue tbh", "possibly???", "lmao nope", "the phat gods say no", "nah bruv", "i say no <o/", "definitely not"]
                 answers = shufflearray(answers);
                 if(!args[0]) return message.reply("usage: `>8ball [question]`");
+                
                var num = Math.round(Math.round(Math.random()*59)/3);
                var selected = answers[num];
                if(!args.join(' ').endsWith("?")){
@@ -334,6 +335,7 @@ client.on("message", async message => {
                else if(args.join(' ').endsWith("?")){
                 var ques = (args.join(" "));
             }
+                if(quess.split('').length > 50) return message.reply(`would you please try asking a question that isn't ${ques.split('').length} characters long`);
                message.channel.sendEmbed({
                    color: 0xffe23c,
                    author: {
