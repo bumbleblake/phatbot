@@ -236,6 +236,7 @@ client.on("message", async message => {
                 else var rec = parseInt(args[1]);
                 if(!member2) return message.reply("usage: `>rps [user] [number]`");
                 if(member2 == member1) return message.reply("you cannot duel yourself!");
+                if(rec > 1000001) return message.reply("HEY! I SEE YOU TRYING TO BREAK THIS BOT! BAD!");
                 if(rec == 1){
                 rps(member1,member2);
                 message.channel.sendEmbed({
