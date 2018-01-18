@@ -368,7 +368,8 @@ client.on("message", async message => {
                 }
             }
                 var thing1 = args[0].toString();
-                var thing2 = args[1].toString()
+                var thing2 = args[1].toString();
+                if(thing1.split('').length > 33 || thing2.split('').length > 33) return message.reply("OI MATE WOULD YOU MIND PICKING A SHORTER NAME");
                 var matches = ["shadow teddy", "shadow teddy1424", "teddy shadow", "teddy1424 shadow", "happy teddy", "happy teddy1424", "teddy happy", "teddy1424 happy", "victoria teddy", "victoria teddy1424", "teddy victoria", "teddy1424 victoria", "michael bubba", "michael bubbaplayspiano", "michael taryn", "bubba michael", "bubbaplayspinao michael", "taryn michael", "paunda anya", "anya paunda", "ben anya", "anya ben"];
                 if(matches.indexOf((thing1.toLowerCase().toString() + " " + thing2.toLowerCase().toString())) != -1){
                     return message.channel.sendEmbed({
