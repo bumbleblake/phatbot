@@ -1,6 +1,8 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 var scramble = false;
+var scramblechan = '';
+var numberchan = '';
 var selectedtime = 0;
 var winner;
 var choice1;
@@ -64,6 +66,7 @@ client.on("message", async message => {
                 while(output == chosen){
                     output = chosen.shuffle();
                 }
+                scramblechan=message.channel.id;
                 setTimeout(function(){
                 message.channel.sendEmbed({
                     color: 0xffe23c,
@@ -211,6 +214,7 @@ client.on("message", async message => {
                 }
                 chosennumber = Math.round(Math.random()*(selectedgame));
                 numbergame = true;
+                numberchan = message.channel.id;
                 message.channel.sendEmbed({
                     color: 0xffe23c,
                     author: {
@@ -467,7 +471,7 @@ client.on("message", async message => {
                 })
             }
         } else {
-        if(scramble == true){
+        if(scramble == true && message.channel.id == scramblechan){
             if(message.content.toLowerCase().indexOf(chosen) != -1){
                 if(time == 30000 && count >= 20){
                     var messa = "you had only " + 30-count + " seconds left!";
@@ -522,7 +526,7 @@ client.on("message", async message => {
                 guess.push({guess: message.content.toString(), auth: (message.member.displayName)})
             }
         }
-        if(numbergame == true){
+        if(numbergame == true && message.channel.id == numberchan){
             if(!Number.isNaN(parseInt(message.content))){
             if(parseInt(message.content) == chosennumber){
                 
