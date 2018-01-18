@@ -334,9 +334,8 @@ client.on("message", async message => {
                }
                else if(args.join(' ').endsWith("?")){
                 var ques = (args.join(" "));
-            }
-                message.reply(ques.split('').length);
-                if(ques.split('').length > 50) return message.reply(`would you please try asking a question that isn't ${ques.split('').length} characters long`);
+               }
+                if(ques.split('').length > 33) return message.reply(`would you please try asking a question that isn't ${ques.split('').length} characters long`);
                message.channel.sendEmbed({
                    color: 0xffe23c,
                    author: {
