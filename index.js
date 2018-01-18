@@ -47,6 +47,10 @@ client.on("message", async message => {
     var args = message.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
     if(message.channel.type != 'dm' && message.channel.type != 'groupdm'){
+        if(message.content.indexOf("bumbydivintos") != -1){
+            message.reply("no").then(() => {
+            message.delete()});
+        }
         if((message.content.indexOf(prefix) == 0)){
             if(command === "scramble"){
             if(scramble == true) return message.reply("there is already a scramble game happening right now!");
