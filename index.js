@@ -202,6 +202,14 @@ client.on("message", async message => {
                     }
                 },time);
             }
+            if(command === "bad"){
+                if(message.author.id == '145772530454626304'){
+                clearTimeout(set);
+                    clearInterval(ret);
+                    scramble = false;
+                    numbergame = false;
+                }
+            }
             if(command === "number"){
                 if(numbergame == true)return message.reply("there is already a game of guess the number happening right now!");
                 if(scramble == true) return message.reply("there is already another game happening right now!");
