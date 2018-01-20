@@ -531,6 +531,7 @@ client.on("message", async message => {
                 });chosen = '';
                 count = 0;
                 guess = [];
+                scramblechan='';
                 return;
             } else {
                 message.react('❌').catch(function(error){
@@ -573,6 +574,7 @@ client.on("message", async message => {
                     }
                 });
                 chosennumber = '';
+                numberid="";
                 selectedtime=0;
                 nue = [];
                 return;
@@ -621,6 +623,7 @@ client.on("message", async message => {
                     })
                     chosennumber = '';
                     nue = [];
+                    numberid="";
                     return;
                 }
             }
