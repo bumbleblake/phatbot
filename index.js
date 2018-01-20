@@ -14,6 +14,7 @@ var chosen = '';
 var guess = [];
 var nue = [];
 var ret;
+var numberid;
 var set;
 var time;
 var count = 0;
@@ -47,10 +48,6 @@ client.on("message", async message => {
     var args = message.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
     if(message.channel.type != 'dm' && message.channel.type != 'groupdm'){
-        if(message.content.indexOf("bumbydivintos") != -1){
-            message.reply("no").then(() => {
-            message.delete()});
-        }
         if((message.content.indexOf(prefix) == 0)){
             if(command === "help"){
                 message.author.sendMessage("__***phat** commands*__ \n \n made by bumble#8029 \n ```>scramble``` the bot will select a random word from 4 to 7 letters long, shuffle the letters around, and then you will have a selected amount of time to guess what the original word was by typing your guess in chat! \n ```>number``` play a game of Guess the Number with a randomly selected difficulty ranging from out of 100 to out of 1 million! \n ```>rps [user mention] [optional number]``` duel other people in a completely computer-controlled game of rock, paper, scissors! \n ```>ship [input 1] [input 2]``` calculate the chances of love between your two inputs! \n ```>8ball [question]``` ask the phat 8ball a question! \n \n *thank you for reading this poorly written list of commands. \n if there are any problems with the phat bot, please contact me (@bumble#8029) so that i can finally stop being lazy and fix your bug*")
@@ -239,7 +236,7 @@ client.on("message", async message => {
                         inline: true,
                     }]
                 })
-               
+               numberid = message.author.id;
             }
             if(command === "rps"){
                 var member1 = message.member;
@@ -534,7 +531,7 @@ client.on("message", async message => {
                 guess.push({guess: message.content.toString(), auth: (message.member.displayName)})
             }
         }
-        if(numbergame == true && message.channel.id == numberchan){
+        if(numbergame == true && message.channel.id == numberchan && message.author.id == numberid){
             if(!Number.isNaN(parseInt(message.content))){
             if(parseInt(message.content) == chosennumber){
                 
