@@ -52,6 +52,10 @@ client.on("message", async message => {
             message.delete()});
         }
         if((message.content.indexOf(prefix) == 0)){
+            if(command === "help"){
+                message.author.sendMessage("__***phat** commands*__ \n \n made by bumble#8029 \n ```>scramble``` the bot will select a random word from 4 to 7 letters long, shuffle the letters around, and then you will have a selected amount of time to guess what the original word was by typing your guess in chat! \n ```>number``` play a game of Guess the Number with a randomly selected difficulty ranging from out of 100 to out of 1 million! \n ```>rps [user mention] [optional number]``` duel other people in a completely computer-controlled game of rock, paper, scissors! \n ```>ship [input 1] [input 2]``` calculate the chances of love between your two inputs! \n ```>8ball [question]``` ask the phat 8ball a question! \n \n *thank you for reading this poorly written list of commands. \n if there are any problems with the phat bot, please contact me (@bumble#8029) so that i can finally stop being lazy and fix your bug*")
+                .then(() => message.reply("check those DMs boi")).catch(error => message.reply("your server DMs are turned off :("));
+            }
             if(command === "scramble"){
             if(scramble == true) return message.reply("there is already a scramble game happening right now!");
                 if(numbergame == true) return message.reply("there is already another game happening right now!");
