@@ -370,11 +370,11 @@ client.on("message", async message => {
                 if(message.mentions.members.first() == args[1]){
                     args[1] = message.mentions.members.first().user.username
                 }
-                if(message.mentions.members.last() == args[0]){
-                    args[0] = message.mentions.members.last().user.username
+                if(message.mentions.members.array()[1] == args[0]){
+                    args[0] = message.mentions.members.array()[1].user.username
                 }
-                if(message.mentions.members.last() == args[1]){
-                    args[1] = message.mentions.members.last().user.username
+                if(message.mentions.members.array()[1] == args[1]){
+                    args[1] = message.mentions.members.array()[1].user.username
                 }
             }
                 var thing1 = args[0].toString();
