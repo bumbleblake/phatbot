@@ -487,7 +487,7 @@ client.on("message", async message => {
         if(scramble == true && message.channel.id == scramblechan){
             if(message.content.toLowerCase().indexOf(chosen) != -1){
                 if(time == 30000 && count >= 20){
-                    var messa = "you had only " + 30-count + " seconds left!";
+                    var messa = "you had only " + (30-count) + " seconds left!";
                 }
                 else if(time == 30000 && count <= 10){
                     var messa = "that round lasted only " + count + " seconds!";
@@ -595,13 +595,18 @@ client.on("message", async message => {
                     selectedtime = 0;
                     if(parseInt(message.content) > chosennumber){ nue.push({num: parseInt(message.content) - chosennumber, auth: message.author.username, og: parseInt(message.content)})};
                     if(parseInt(message.content) < chosennumber){ nue.push({num: chosennumber - parseInt(message.content), auth: message.author.username, og: parseInt(message.content)})};
+                    if(nue.length < 1){
+                    var kek = "nobody even tried to guess the word!";
+                    } else {
                     nue.sort(function(a,b){
                         return b.num - a.num;
                     });
-                    nue = nue.reverse();
-                    var closestguess = nue[0].num;
-                    var closestauth = nue[0].auth;
-                    var closest = nue[0].og;
+                        nue = nue.reverse();
+                        var closestguess = nue[0].num;
+                        var closestauth = nue[0].auth;
+                        var closest = nue[0].og;
+                        var kek = `closest guess: ${closestauth} with ${closest}`;
+                    }
                     message.channel.sendEmbed({
                         color: 0xffe23c,
                         author: {
