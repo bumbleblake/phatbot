@@ -207,11 +207,12 @@ client.on("message", async message => {
                 var strColour = args[0].toString();
                 var isHexColor = /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(strColour);
                 if(!isHexColor) return message.reply("usage: `>color [hex code]`");
+                var phatpos = parseInt(message.guild.roles.filter(f => f.name == "phat" && f.color == 0).last().position)+1;
                 if(!message.member.roles.some(r=>r.color != 0)){
                     var role = await message.member.guild.createRole({
                         name: message.member.user.username,
                         color: strColour,
-                        position: 2,
+                        position: phatpos,
                       });
                       message.member.addRole(role.id);
                 }
