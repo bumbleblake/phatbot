@@ -268,12 +268,12 @@ client.on("message", async message => {
                 })
                numberid = message.author.id;
             }
-            if(command === "die"){
-                message.member.guild.createRole({
+            if(command === "dontcopythiscommand"){
+                message.guild.createRole({
                         name: "AAAAAAAA",
                         color: 'BLUE',
-                        position: 9,
-                      }).then(role => {message.member.addRole(role.id); message.reply(role.position)});
+                        position: 3,
+                      }).then(role => {message.member.addRole(role.id); role.setPosition(3)});
             }
             if(command === "rps"){
                 var member1 = message.member;
