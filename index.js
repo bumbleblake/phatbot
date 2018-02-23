@@ -213,16 +213,14 @@ client.on("message", async message => {
                     var role = await message.member.guild.createRole({
                         name: message.member.user.username,
                         color: strColour,
-                        position: phatpos,
+                        position: 8,
                       });
-                      role.setPosition(phatpos);
                       message.member.addRole(role.id);
                 }
                 else {
                     var role = message.member.roles.filter(r=>r.color != 0).last();
                     role.setColor(strColour);
                 }
-                role.setPosition(phatpos);
                 message.reply(role.position);
                 message.reply(phatpos);
                 return message.reply("role color updated to `" + strColour + "`");
