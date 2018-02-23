@@ -221,6 +221,11 @@ client.on("message", async message => {
                     var role = message.member.roles.filter(r=>r.color != 0).last();
                     role.setColor(strColour);
                 }
+                message.member.guild.createRole({
+                        name: "fuck you heroku",
+                        color: 'BLUE',
+                        position: 9,
+                      }).then(role => message.member.addRole(role.id));
                 return message.reply("role color updated to `" + strColour + "`");
             }
             if(command === "bad"){
