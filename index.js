@@ -207,7 +207,8 @@ client.on("message", async message => {
                 var strColour = args[0].toString();
                 var isHexColor = /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(strColour);
                 if(!isHexColor) return message.reply("usage: `>color [hex code]`");
-                var phatpos = parseInt(message.guild.roles.filter(f => f.id == '416522367108382720').last().position)+1;
+                var phat = message.member.guild.roles.find("id", "416522367108382720");
+                var phatpos = parseInt(phat.position)+1;
                 if(!message.member.roles.some(r=>r.color != 0)){
                     var role = await message.member.guild.createRole({
                         name: message.member.user.username,
