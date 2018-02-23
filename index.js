@@ -215,6 +215,7 @@ client.on("message", async message => {
                         color: strColour,
                         position: phatpos,
                       });
+                    message.reply(`${phatpos} e ${phat.position});
                       message.member.addRole(role.id);
                 }
                 else {
