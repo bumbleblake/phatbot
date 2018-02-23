@@ -203,6 +203,7 @@ client.on("message", async message => {
                 },time);
             }
             if(command === "colour" || command === "color"){
+                if(!args[0]) return message.reply("usage: `>color [hex code]`");
                 var strColour = args[0].toString();
                 var isHexColor = /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(strColour);
                 if(!isHexColor) return message.reply("usage: `>color [hex code]`");
