@@ -210,11 +210,12 @@ client.on("message", async message => {
                 var phat = message.member.guild.roles.find("id", "416522367108382720");
                 var phatpos = parseInt(phat.position)+2;
                 if(!message.member.roles.some(r=>r.color != 0 && r.id != "416522367108382720")){
+                    message.reply(phatpos);
                     message.member.guild.createRole({
                         name: message.member.user.username,
                         color: strColour,
-                        position: phatpos
-                      }).then(role => message.member.addRole(role.id));
+                        position: phatpos,
+                      }).then(role => {message.member.addRole(role.id); message.reply("AAAAA", role.position)});
                       
                 }
                 else {
