@@ -211,6 +211,7 @@ client.on("message", async message => {
                     var role = await message.member.guild.createRole({
                         name: message.member.user.username,
                         color: strColour,
+                        position: 2,
                       });
                       message.member.addRole(role.id);
                 }
