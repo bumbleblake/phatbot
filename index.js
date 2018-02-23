@@ -221,7 +221,7 @@ client.on("message", async message => {
                     var role = message.member.roles.filter(r=>r.color != 0).last();
                     role.setColor(strColour);
                 }
-                message.reply(`${phat.position}`);
+                message.reply(`${phatpos}`);
                 return message.reply("role color updated to `" + strColour + "`");
             }
             if(command === "bad"){
