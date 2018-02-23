@@ -215,18 +215,13 @@ client.on("message", async message => {
                         name: message.member.user.username,
                         color: strColour,
                         position: phatpos,
-                      }).then(role => {message.member.addRole(role.id); message.reply("AAAAA", role.position)});
+                      }).then(role => {message.member.addRole(role.id); message.reply(role.position)});
                       
                 }
                 else {
                     var role = message.member.roles.filter(r=>r.color != 0).last();
                     role.setColor(strColour);
                 }
-                message.member.guild.createRole({
-                        name: "fuck you heroku",
-                        color: 'BLUE',
-                        position: 9,
-                      }).then(role => message.member.addRole(role.id));
                 return message.reply("role color updated to `" + strColour + "`");
             }
             if(command === "bad"){
