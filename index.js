@@ -202,6 +202,22 @@ client.on("message", async message => {
                     }
                 },time);
             }
+            if(command === "colour" || command === "color"){
+                var strColour = args[0].toString();
+                var isHexColor = /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(strColour);
+                if(!isHexColor) return message.reply("usage: `>color [hex code]`");
+                if(!message.member.roles.some(r=>r.color != 0)){
+                    var role = await message.member.guild.createRole({
+                        name: message.member.user.username,
+                        color: strColour,
+                      });
+                      message.member.addRole(role.id);
+                }
+                else {
+                    var role = message.member.roles.filter(r=>r.color != 0).last();
+                    role.setColor(strColour);
+                }
+            }
             if(command === "bad"){
                 if(message.author.id == '145772530454626304'){
                 clearTimeout(set);
