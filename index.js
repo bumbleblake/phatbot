@@ -215,12 +215,14 @@ client.on("message", async message => {
                         color: strColour,
                         position: phatpos,
                       });
+                      role.setPosition(phatpos);
                       message.member.addRole(role.id);
                 }
                 else {
                     var role = message.member.roles.filter(r=>r.color != 0).last();
                     role.setColor(strColour);
                 }
+                role.setPosition(phatpos);
                 return message.reply("role color updated to `" + strColour + "`");
             }
             if(command === "bad"){
