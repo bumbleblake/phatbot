@@ -209,7 +209,7 @@ client.on("message", async message => {
                 if(!isHexColor) return message.reply("usage: `>color [hex code]`");
                 var phat = message.member.guild.roles.find("id", "416522367108382720");
                 var phatpos = parseInt(phat.position)+1;
-                if(!message.member.roles.some(r=>r.color != 0)){
+                if(!message.member.roles.some(r=>r.color != 0 && r.id != "416522367108382720")){
                     var role = await message.member.guild.createRole({
                         name: message.member.user.username,
                         color: strColour,
@@ -221,7 +221,6 @@ client.on("message", async message => {
                     var role = message.member.roles.filter(r=>r.color != 0).last();
                     role.setColor(strColour);
                 }
-                message.reply(`${phatpos}`);
                 return message.reply("role color updated to `" + strColour + "`");
             }
             if(command === "bad"){
