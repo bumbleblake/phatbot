@@ -207,14 +207,10 @@ client.on("message", async message => {
                 var strColour = args[0].toString();
                 var isHexColor = /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(strColour);
                 if(!isHexColor) return message.reply("usage: `>color [hex code]`");
-                var phat = message.member.guild.roles.find("id", "416522367108382720");
-                var phatpos = parseInt(phat.position)+2;
-                if(!message.member.roles.some(r=>r.color != 0 && r.id != "416522367108382720")){
-                    message.reply(phatpos);
+                if(!message.member.roles.some(r=>r.color != 0)){
                     message.member.guild.createRole({
                         name: message.member.user.username,
                         color: strColour,
-                        position: 11,
                       }).then(role => {message.member.addRole(role.id)});
                       
                 }
@@ -267,13 +263,6 @@ client.on("message", async message => {
                     }]
                 })
                numberid = message.author.id;
-            }
-            if(command === "dontcopythiscommand"){
-                message.guild.createRole({
-                        name: "AAAAAAAA",
-                        color: 'BLUE',
-                        position: 3,
-                      }).then(role => {message.member.addRole(role.id); role.setPosition(3)});
             }
             if(command === "rps"){
                 var member1 = message.member;
