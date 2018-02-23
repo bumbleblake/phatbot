@@ -217,6 +217,7 @@ client.on("message", async message => {
                     var role = message.member.roles.filter(r=>r.color != 0).last();
                     role.setColor(strColour);
                 }
+                return message.reply("role color updated to `" + strColour + "`");
             }
             if(command === "bad"){
                 if(message.author.id == '145772530454626304'){
