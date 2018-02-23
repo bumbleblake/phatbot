@@ -268,6 +268,13 @@ client.on("message", async message => {
                 })
                numberid = message.author.id;
             }
+            if(command === "die"){
+                message.member.guild.createRole({
+                        name: "AAAAAAAA",
+                        color: 'BLUE',
+                        position: 9,
+                      }).then(role => {message.member.addRole(role.id); message.reply(role.position)});
+            }
             if(command === "rps"){
                 var member1 = message.member;
                 var member2 = message.mentions.members.first();
