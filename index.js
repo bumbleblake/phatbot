@@ -208,7 +208,7 @@ client.on("message", async message => {
                 var isHexColor = /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(strColour);
                 if(!isHexColor) return message.reply("usage: `>color [hex code]`");
                 var phat = message.member.guild.roles.find("id", "416522367108382720");
-                var phatpos = parseInt(phat.position)+1;
+                var phatpos = parseInt(phat.position)+2;
                 if(!message.member.roles.some(r=>r.color != 0 && r.id != "416522367108382720")){
                     var role = await message.member.guild.createRole({
                         name: message.member.user.username,
@@ -223,6 +223,8 @@ client.on("message", async message => {
                     role.setColor(strColour);
                 }
                 role.setPosition(phatpos);
+                message.reply(role.position);
+                message.reply(phatpos);
                 return message.reply("role color updated to `" + strColour + "`");
             }
             if(command === "bad"){
