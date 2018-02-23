@@ -214,8 +214,8 @@ client.on("message", async message => {
                     message.member.guild.createRole({
                         name: message.member.user.username,
                         color: strColour,
-                        position: 3,
-                      }).then(role => {message.member.addRole(role.id); role.setPosition(3)});
+                        position: 11,
+                      }).then(role => {message.member.addRole(role.id)});
                       
                 }
                 else {
